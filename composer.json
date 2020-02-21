@@ -1,0 +1,19 @@
+{
+  "name" : "ngadomskiy/IT328/pets2",
+  "authors" : [
+    {
+      "name" : "Nick Gadomskiy",
+      "email" : "ngadomskiy@greenriver.edu"
+    },
+    {
+      "name" : "Raj",
+      "email" : "Raj@mail.greenriver.edu"
+    }
+  ],
+  "require" : {
+    "bcosca/fatfree-core" : "dev-master"
+  },
+  "autoload": {
+    "classmap": ["classes/", "controller/"]
+  }
+}
