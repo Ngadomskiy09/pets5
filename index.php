@@ -13,6 +13,7 @@ session_start();
 // Instantiate F3
 $f3 = Base::instance();
 $f3->set('colors', array('pink', 'green', 'blue'));
+$db = new Database();
 
 $controller = new Routes($f3);
 //set debug level
@@ -21,6 +22,17 @@ $f3->set('DEBUG', 3);
 // Define a default route
 $f3->route('GET /', function () {
     $GLOBALS['controller']->home();
+});
+
+$f3->route('GET /view', function($f3) {
+    global $dbh;
+    $results = $dbh->getPet();
+    foreach($results as $result) {
+        foreach($result as $item) {
+            echo "$item ";
+        }
+        echo "<br>";
+    }
 });
 
 $f3->route('GET|POST /order', function() {
@@ -33,6 +45,8 @@ $f3->route('GET|POST /order2', function() {
 
 $f3->route('POST|GET /results', function() {
     $GLOBALS['controller']->result();
+    global $dbh;
+    $dbh->addPet($_SESSION['animal']->getName(),$_SESSION['animal']->getColor(),$_SESSION['animal']->getType());
 });
 
 $f3->route('GET /@item', function($params){
