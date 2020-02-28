@@ -13,7 +13,7 @@ session_start();
 // Instantiate F3
 $f3 = Base::instance();
 $f3->set('colors', array('pink', 'green', 'blue'));
-$db = new Database();
+$dbh = new Database();
 
 $controller = new Routes($f3);
 //set debug level
